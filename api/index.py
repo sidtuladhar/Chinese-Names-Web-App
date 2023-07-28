@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, render_template
 import pandas as pd
-import os
 
 app = Flask(__name__, template_folder='templates', static_folder='../static')
 
@@ -43,4 +42,4 @@ def about():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=1234, debug=True)
