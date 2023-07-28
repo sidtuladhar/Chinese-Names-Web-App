@@ -8,8 +8,8 @@
     }
   ],
 
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/api/index" }
-  ]
+
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+
 
 }
