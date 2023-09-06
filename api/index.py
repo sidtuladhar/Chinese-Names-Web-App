@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 import pandas as pd
 
-app = Flask(__name__, template_folder='api/templates', static_folder='static')
+app = Flask(__name__, template_folder='templates', static_folder='/static')
 
 top100name_df = pd.read_csv('../data/top100name.year.csv')
 top50char_df = pd.read_csv('../data/top50char.year.csv')
