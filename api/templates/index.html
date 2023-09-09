@@ -1,18 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>CSV Name Search</title>
     <link rel="stylesheet" href="../../static/styles.css">
+    <meta charset="UTF-8">
 </head>
 <body>
-    <div class="container">
-        <h1>CSV Name Search</h1>
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Enter a name...">
-            <button onclick="searchNames()">Search</button>
-        </div>
-        <div id="searchResults"></div>
-    </div>
-    <script src="../../static/script.js"></script>
+<div class="container">
+    <h1>中文姓名含义分析</h1>
+
+    <br>
+
+    <form id="nameForm">
+        <label for="name"></label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <br><br>
+
+        <label for="confirm_name"></label>
+        <input type="text" id="confirm_name" placeholder="Confirm your name" required>
+
+        <br><br>
+    </form>
+    <button type="button" onclick="validateAndSearch()">生成结果</button>
+
+    <div id="searchResults"></div>
+</div>
+
+<script src="../../static/script.js"></script>
+
+<br><br>
+
+<div class="container">
+    <footer>
+        <h2>说明：您的姓名将不会被记录，所有相关数据仅将用于本研究且被严格保密。</h2>
+    </footer>
+</div>
 </body>
 </html>
