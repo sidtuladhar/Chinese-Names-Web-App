@@ -36,6 +36,12 @@ def search_names():
     return jsonify(results)
 
 
+@app.route('/results', methods=['GET'])
+def result():
+    name = request.args.get('results', '')
+    return render_template('results.html', results=name)
+
+
 @app.route('/about')
 def about():
     return 'About'

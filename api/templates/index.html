@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>CSV Name Search</title>
+    <title>Search</title>
     <link rel="stylesheet" href="../../static/styles.css">
     <meta charset="UTF-8">
 </head>
@@ -27,7 +27,21 @@
     <div id="searchResults"></div>
 </div>
 
-<script src="../../static/script.js"></script>
+<script>
+    function validateAndSearch() {
+        const name = document.getElementById("name").value;
+        const confirmName = document.getElementById("confirm_name").value;
+
+        if (name !== confirmName) {
+            alert("Names do not match. Please check and try again.");
+        } else if (name === "" || confirmName === "") {
+            alert("Please enter a name.");
+        } else {
+            // Names match, initiate the search
+            window.location.href = `/results?results=${name}`;
+        }
+    }
+</script>
 
 <br><br>
 
