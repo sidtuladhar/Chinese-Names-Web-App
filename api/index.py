@@ -1,14 +1,7 @@
 from flask import Flask, request, jsonify, render_template
-import pandas as pd
+from functions import compute_name
 
 app = Flask(__name__, template_folder='templates', static_folder='../static')
-
-top100name_df = pd.read_csv('../data/top100name.year.csv')
-top50char_df = pd.read_csv('../data/top50char.year.csv')
-top1000name_df = pd.read_csv('../data/top1000name.prov.csv')
-familyname_df = pd.read_csv('../data/familyname.csv')
-givenname_df = pd.read_csv('../data/givenname.csv')
-population_df = pd.read_csv('../data/population.csv')
 
 
 @app.route('/')
@@ -18,22 +11,19 @@ def index():
 
 @app.route('/search', methods=['GET'])
 def search_names():
-    search_term = request.args.get('q', '').lower()
-    results = []
+    name = request.args.get('q', '').lower()
 
-    # Search through the name columns for matches
-    name_columns = [col for col in top100name_df.columns if col.startswith('name')]
-    for col in name_columns:
-        matches = top100name_df[top100name_df[col].str.lower().str.contains(search_term, na=False)]
-        if not matches.empty:
-            for _, row in matches.iterrows():
-                result = {
-                    'Name': row[col],
-                    'Year': col.split('.')[-1]
-                }
-                results.append(result)
+    result = compute_name(name, 1995)
+    SNU = result[7][0]
+    SNI = result[8][0]
+    NU = result[9][0]
+    CCU = result[10][0]
+    NG = result[11][0]
+    NV = result[12][0]
+    NW = result[13][0]
+    NC = result[14][0]
 
-    return jsonify(results)
+    return jsonify(f"SNU: {SNU}\nSNI: {SNI}\nNU: {NU}\nCCU: {CCU}\nNG: {NG}\nNV: {NV}\nNW: {NW}\nNC: {NC}")
 
 
 @app.route('/results', methods=['GET'])

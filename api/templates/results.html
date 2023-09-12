@@ -34,13 +34,36 @@
         if (results.length === 0) {
             searchResults.innerHTML = '<p>No matches found.</p>';
         } else {
-            const resultList = document.createElement('ul');
-            results.forEach(result => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${result.Name} (Year: ${result.Year})`;
-                resultList.appendChild(listItem);
-            });
-            searchResults.appendChild(resultList);
+            // Display the result as a table
+            const table = document.createElement('table');
+            searchResults.innerHTML = `<div><table>
+  <tbody>
+    <tr>
+      <td>SNU</td>
+      <td>SNI</td>
+      <td>NU</td>
+      <td>CCU</td>
+      <td>NG</td>
+      <td>NV</td>
+      <td>NW</td>
+      <td>NC</td>
+    </tr>
+    <tr>
+      <td>hi</td>
+      <td>and</td>
+      <td>hi</td>
+      <td>and</td>
+      <td>hi</td>
+      <td>and</td>
+      <td>hi</td>
+      <td>and</td>
+    </tr>
+
+
+  </tbody>
+</table>`
+
+
         }
     }
 </script>

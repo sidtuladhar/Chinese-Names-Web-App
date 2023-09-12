@@ -1,8 +1,25 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 50px;
     background-color: cornflowerblue;
+    min-height: 100vh;
+    text-align: center;
+    justify-content: center;
+    margin: 0; /* Remove default margin to avoid horizontal scrolling */
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%; /* Adjust the width as needed */
+    min-width: 100px;
+}
+
+table, th, td {
+    border: 3px solid black;
+    text-align: center;
+}
+
+th, td {
+    padding: 20px;
 }
 
 .container {
@@ -11,7 +28,7 @@ body {
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin: 100px;
 }
 
 .search-box {
