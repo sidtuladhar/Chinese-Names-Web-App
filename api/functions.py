@@ -12,6 +12,7 @@ def compute_name(name, year):
 if __name__ == '__main__':
     result = compute_name('包寒吴霜', 1995)
     print(result)
+
     SNU = result[7][0]
     SNI = result[8][0]
     NU = result[9][0]

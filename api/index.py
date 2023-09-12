@@ -14,6 +14,9 @@ def search_names():
     name = request.args.get('q', '').lower()
 
     result = compute_name(name, 1995)
+    result_array = [result[7][0], result[8][0], result[9][0], result[10][0], result[11][0], result[12][0],
+                    result[13][0], result[14][0]]
+    print(result_array)
     SNU = result[7][0]
     SNI = result[8][0]
     NU = result[9][0]
@@ -23,7 +26,7 @@ def search_names():
     NW = result[13][0]
     NC = result[14][0]
 
-    return jsonify(f"SNU: {SNU}\nSNI: {SNI}\nNU: {NU}\nCCU: {CCU}\nNG: {NG}\nNV: {NV}\nNW: {NW}\nNC: {NC}")
+    return jsonify(result_array)
 
 
 @app.route('/results', methods=['GET'])

@@ -34,8 +34,8 @@
         if (results.length === 0) {
             searchResults.innerHTML = '<p>No matches found.</p>';
         } else {
-            // Display the result as a table
-            const table = document.createElement('table');
+            // Display the result as a table using result arrays.
+
             searchResults.innerHTML = `<div><table>
   <tbody>
     <tr>
@@ -49,14 +49,14 @@
       <td>NC</td>
     </tr>
     <tr>
-      <td>hi</td>
-      <td>and</td>
-      <td>hi</td>
-      <td>and</td>
-      <td>hi</td>
-      <td>and</td>
-      <td>hi</td>
-      <td>and</td>
+      <td>${results[0]}</td>
+      <td>${results[1]}</td>
+      <td>${results[2]}</td>
+      <td>${results[3]}</td>
+      <td>${results[4]}</td>
+      <td>${results[5]}</td>
+      <td>${results[6]}</td>
+      <td>${results[7]}</td>
     </tr>
 
 
