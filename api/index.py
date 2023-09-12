@@ -16,7 +16,7 @@ def search_names():
     print(name, year)
 
     result = compute_name(name, int(year))
-    result_array = [result[7][0], result[8][0], result[9][0], result[10][0], result[11][0], result[12][0],
+    result_array = [result[6][0], result[7][0], result[8][0], result[9][0], result[10][0], result[11][0], result[12][0],
                     result[13][0], result[14][0]]
 
     return jsonify(result_array)

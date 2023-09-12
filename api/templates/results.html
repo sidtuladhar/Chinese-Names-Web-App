@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Search Results</h1>
+    <h1>以下为您的姓名参数</h1>
     <div id="searchResults">
         <!-- Results will be displayed here -->
     </div>
@@ -40,14 +40,13 @@
             searchResults.innerHTML = `<div><table>
   <tbody>
     <tr>
+      <td>NLen</td>
       <td>SNU</td>
       <td>SNI</td>
       <td>NU</td>
       <td>CCU</td>
       <td>NG</td>
       <td>NV</td>
-      <td>NW</td>
-      <td>NC</td>
     </tr>
     <tr>
       <td>${results[0]}</td>
@@ -57,7 +56,18 @@
       <td>${results[4]}</td>
       <td>${results[5]}</td>
       <td>${results[6]}</td>
-      <td>${results[7]}</td>
+    </tr>
+    <tr>
+    <td>NW</td>
+    <td>NC</td>
+    <td>NFC</td>
+    <td>NMC</td>
+    <td>NFT</td>
+    <td>NMT</td>
+    </tr>
+    <tr>
+    <td>${results[7]}</td>
+    <td>${results[8]}</td>
     </tr>
 
 
