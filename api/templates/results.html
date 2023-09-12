@@ -17,9 +17,10 @@
 
     // JavaScript code to retrieve and display search results goes here
     const urlParams = new URLSearchParams(window.location.search);
-    const resultsParam = urlParams.get('results');
+    const name = urlParams.get('name');
+    const year = urlParams.get('year');
 
-    fetch(`/search?q=${encodeURIComponent(resultsParam)}`)
+    fetch(`/search?name=${encodeURIComponent(name)}&year=${encodeURIComponent(year)}`)
         .then(response => response.json())
         .then(data => displayResults(data))
         .catch(error => {

@@ -17,8 +17,8 @@
 
         <br><br>
 
-        <label for="confirm_name"></label>
-        <input type="text" id="confirm_name" placeholder="Confirm your name" required>
+        <label for="year"></label>
+        <input type="number" id="year" placeholder="Enter your year of birth" required>
 
         <br><br>
     </form>
@@ -30,15 +30,13 @@
 <script>
     function validateAndSearch() {
         const name = document.getElementById("name").value;
-        const confirmName = document.getElementById("confirm_name").value;
+        const year = document.getElementById("year").value;
 
-        if (name !== confirmName) {
-            alert("Names do not match. Please check and try again.");
-        } else if (name === "" || confirmName === "") {
-            alert("Please enter a name.");
+        if (name === "" || year === "") {
+            alert("Please enter a name and year.");
         } else {
             // Names match, initiate the search
-            window.location.href = `/results?results=${name}`;
+            window.location.href = `/results?name=${name}&year=${year}`;
         }
     }
 </script>

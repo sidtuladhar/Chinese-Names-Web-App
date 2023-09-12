@@ -11,28 +11,22 @@ def index():
 
 @app.route('/search', methods=['GET'])
 def search_names():
-    name = request.args.get('q', '').lower()
+    name = request.args.get('name', '')
+    year = request.args.get('year', '')
+    print(name, year)
 
-    result = compute_name(name, 1995)
+    result = compute_name(name, int(year))
     result_array = [result[7][0], result[8][0], result[9][0], result[10][0], result[11][0], result[12][0],
                     result[13][0], result[14][0]]
-    print(result_array)
-    SNU = result[7][0]
-    SNI = result[8][0]
-    NU = result[9][0]
-    CCU = result[10][0]
-    NG = result[11][0]
-    NV = result[12][0]
-    NW = result[13][0]
-    NC = result[14][0]
 
     return jsonify(result_array)
 
 
 @app.route('/results', methods=['GET'])
 def result():
-    name = request.args.get('results', '')
-    return render_template('results.html', results=name)
+    name = request.args.get('name', '')
+    year = request.args.get('year', '')
+    return render_template('results.html', name=name, year=year)
 
 
 @app.route('/about')
