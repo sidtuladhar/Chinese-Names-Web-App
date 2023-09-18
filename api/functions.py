@@ -2,6 +2,8 @@ import rpy2.robjects as robjects
 from rpy2.robjects.packages import importr
 
 pkg = "ChineseNames"
+
+robjects.r(f'install.packages("{pkg}")')
 importr(pkg)
 
 
