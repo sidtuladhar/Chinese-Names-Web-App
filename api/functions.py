@@ -1,10 +1,16 @@
 import rpy2.robjects as robjects
-from rpy2.robjects.packages import importr
+import rpy2.robjects.packages
+import rpy2.robjects.packages as rpackages
 
 pkg = "ChineseNames"
+utils = rpackages.importr('utils')
+utils.chooseCRANmirror(ind=69)
 
-robjects.r(f'install.packages("{pkg}")')
-importr(pkg)
+try:
+    rpackages.importr(pkg)
+except rpy2.robjects.packages.PackageNotInstalledError:
+    robjects.r(f'install.packages("{pkg}")')
+    rpackages.importr(pkg)
 
 
 def compute_name(name, year):
