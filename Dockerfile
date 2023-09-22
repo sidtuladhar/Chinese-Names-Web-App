@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libcurl4-openssl-dev \
     python3  \
-    python3-pip
+    python3-pip \
+    cmake
 
 WORKDIR /app
 
@@ -17,8 +18,10 @@ RUN pip3 install -r requirements.txt
 
 RUN Rscript -e "install.packages('ChineseNames')"
 
-EXPOSE 1234
+EXPOSE 8000
+
+ENV FLASK_APP=api/app
 
 COPY . /app
 
-CMD ["python3", "api/index.py"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=8000"]
