@@ -9,10 +9,11 @@ utils.chooseCRANmirror(ind=69)
 try:
     rpackages.importr(pkg)
 except rpy2.robjects.packages.PackageNotInstalledError:
-    robjects.r(f'install.packages("https://cran.r-project.org/src/contrib/Archive/MuMIn/MuMIn_1.40.0.tar.gz", '
-               f'repos=NULL, type="source")')
-    robjects.r(f'install.packages("bruceR")')
-    robjects.r(f'install.packages("{pkg}")')
+    robjects.r(
+        'install.packages("https://cran.r-project.org/src/contrib/Archive/MuMIn/MuMIn_1.40.0.tar.gz", repos=NULL, '
+        'type="source")')
+    robjects.r('install.packages("bruceR")')
+    robjects.r('install.packages("ChineseNames")')
     rpackages.importr(pkg)
 
 
