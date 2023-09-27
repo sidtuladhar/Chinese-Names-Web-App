@@ -14,8 +14,6 @@ COPY requirements.txt /app/requirements.txt
 
 RUN pip3 install -r requirements.txt
 
-RUN ulimit -n 1024000
-
 RUN Rscript -e "install.packages('https://cran.r-project.org/src/contrib/Archive/MuMIn/MuMIn_1.40.0.tar.gz', repos=NULL, type='source')" && \
     Rscript -e "install.packages('bruceR')" && \
     Rscript -e "install.packages('ChineseNames')"
