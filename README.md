@@ -1,4 +1,4 @@
-## Chinese Names Search Web App
+## [Chinese Names Search Web App](https://chinese-names-cibfpxoeya-uc.a.run.app)
 
 This web app is used to search Chinese Names and returning multiple features of Chinese surnames and Chinese given names
 for scientific research (e.g., name uniqueness, name gender, name valence, and name warmth/competence).
