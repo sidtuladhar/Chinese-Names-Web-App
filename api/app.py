@@ -4,7 +4,7 @@ from functions import compute_name
 
 app = Flask(__name__, template_folder='templates', static_folder='../static')
 
-given_name_df = pd.read_csv('../data/givenname.csv')
+given_name_df = pd.read_csv('data/givenname.csv')
 
 
 def NFT(name):
@@ -17,7 +17,7 @@ def NFT(name):
     totalNFC = 0
 
     for character in list(name)[1:]:
-        NFC = given_name_df[given_name_df['character'] == character]['n.female'].values[0]
+        NFC = given_name_df[given_name_df['character'] == character]['n.female'].iloc[0]
         totalNFC += NFC
         totalNFT += NFC / nFemale
     return [float('%.5g' % (totalNFT / length)), totalNFC / length]
@@ -33,7 +33,7 @@ def NMT(name):
     totalNMC = 0
 
     for character in list(name)[1:]:
-        NMC = given_name_df[given_name_df['character'] == character]['n.male'].values[0]
+        NMC = given_name_df[given_name_df['character'] == character]['n.male'].iloc[0]
         totalNMC += NMC
         totalNMT += NMC / nMale
     return [float('%.5g' % (totalNMT / length)), totalNMC / length]
@@ -73,4 +73,4 @@ def about():
 
 
 if __name__ == '__main__':
-    print(given_name_df)
+    app.run(debug=True)
