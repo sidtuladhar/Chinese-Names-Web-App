@@ -33,7 +33,7 @@ def NMT(name):
 
     for character in list(name)[1:]:
         NMC = given_name_df[given_name_df['character'] == character]['n.male'].iloc[0]
-        totalNMC += NM
+        totalNMC += NMC
         totalNMT += NMC / nMale
     return [float(format(totalNMT / (length - 1) * 1000, '.5f')), totalNMC / (length - 1)]
 
