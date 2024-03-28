@@ -6,7 +6,6 @@ app = Flask(__name__, template_folder='templates', static_folder='../static')
 
 given_name_df = pd.read_csv('data/givenname.csv')
 
-
 def NFT(name):
     length = len(name)
     if length <= 1:
@@ -20,7 +19,7 @@ def NFT(name):
         NFC = given_name_df[given_name_df['character'] == character]['n.female'].iloc[0]
         totalNFC += NFC
         totalNFT += NFC / nFemale
-    return [float('%.5g' % (totalNFT / length)), totalNFC / length]
+    return [float(format(totalNFT / (length - 1) * 1000, '.5f')), totalNFC / (length - 1)]
 
 
 def NMT(name):
@@ -34,9 +33,9 @@ def NMT(name):
 
     for character in list(name)[1:]:
         NMC = given_name_df[given_name_df['character'] == character]['n.male'].iloc[0]
-        totalNMC += NMC
+        totalNMC += NM
         totalNMT += NMC / nMale
-    return [float('%.5g' % (totalNMT / length)), totalNMC / length]
+    return [float(format(totalNMT / (length - 1) * 1000, '.5f')), totalNMC / (length - 1)]
 
 
 @app.route('/')
