@@ -13,6 +13,7 @@ found [here](https://github.com/psychbruce/ChineseNames/blob/main/README.md).
 - pandas 2.0.3
 - rpy2 3.5.1
 - gunicorn 21.2.0
+- R 4.1.2
 
 ### Usage
 
