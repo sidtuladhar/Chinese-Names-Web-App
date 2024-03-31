@@ -12,7 +12,7 @@ except rpy2.robjects.packages.PackageNotInstalledError:
     robjects.r(
         'install.packages("https://cran.r-project.org/src/contrib/Archive/MuMIn/MuMIn_1.40.0.tar.gz", repos=NULL, '
         'type="source")')
-    robjects.r('install.packages("bruceR")')
+    robjects.r('install.packages("bruceR", dep=TRUE)')
     robjects.r('install.packages("ChineseNames")')
     rpackages.importr(pkg)
 
