@@ -4,7 +4,8 @@ from functions import compute_name
 
 app = Flask(__name__, template_folder='templates', static_folder='../static')
 
-given_name_df = pd.read_csv('data/givenname.csv')
+given_name_df = pd.read_csv('../data/givenname.csv')
+
 
 def NFT(name):
     length = len(name)
@@ -16,7 +17,11 @@ def NFT(name):
     totalNFC = 0
 
     for character in list(name)[1:]:
-        NFC = given_name_df[given_name_df['character'] == character]['n.female'].iloc[0]
+        try:
+            NFC = given_name_df[given_name_df['character'] == character]['n.female'].iloc[0]
+        except IndexError:
+            continue
+
         totalNFC += NFC
         totalNFT += NFC / nFemale
     return [float(format(totalNFT / (length - 1) * 1000, '.5f')), totalNFC / (length - 1)]
@@ -30,12 +35,17 @@ def NMT(name):
     nMale = 600353517  # from population.csv
     totalNMT = 0
     totalNMC = 0
+    missing_char = 0
 
     for character in list(name)[1:]:
-        NMC = given_name_df[given_name_df['character'] == character]['n.male'].iloc[0]
+        try:
+            NMC = given_name_df[given_name_df['character'] == character]['n.male'].iloc[0]
+        except IndexError:
+            missing_char += 1
+            continue
         totalNMC += NMC
         totalNMT += NMC / nMale
-    return [float(format(totalNMT / (length - 1) * 1000, '.5f')), totalNMC / (length - 1)]
+    return [float(format(totalNMT / (length - 1) * 1000, '.5f')), totalNMC / (length - 1), missing_char]
 
 
 @app.route('/')
@@ -51,10 +61,11 @@ def search_names():
 
     result = compute_name(name, int(year))
     additional_variables = NFT(name) + NMT(name)
+    print(additional_variables)
 
     result_array = [result[6][0], result[7][0], result[8][0], result[9][0], result[10][0], result[11][0], result[12][0],
                     result[13][0], result[14][0], additional_variables[1],
-                    additional_variables[3], additional_variables[0], additional_variables[2]]
+                    additional_variables[3], additional_variables[0], additional_variables[2], additional_variables[4]]
 
     return jsonify(result_array)
 
