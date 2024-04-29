@@ -5,6 +5,15 @@ from functions import compute_name
 app = Flask(__name__, template_folder='templates', static_folder='../static')
 
 given_name_df = pd.read_csv('../data/givenname.csv')
+family_name_df = pd.read_csv('../data/familyname.csv')
+
+
+def family_name(name):
+    family_names = family_name_df['surname'].tolist()
+    if name[:2] in family_names:
+        return name[:2]
+    elif name[0] in family_names:
+        return name[0]
 
 
 def NFT(name):
@@ -16,7 +25,9 @@ def NFT(name):
     totalNFT = 0
     totalNFC = 0
 
-    for character in list(name)[1:]:
+    surname = family_name(name)
+
+    for character in list(name)[len(surname):]:
         try:
             NFC = given_name_df[given_name_df['character'] == character]['n.female'].iloc[0]
         except IndexError:
@@ -37,7 +48,10 @@ def NMT(name):
     totalNMC = 0
     missing_char = 0
 
-    for character in list(name)[1:]:
+    surname = family_name(name)
+
+    for character in list(name)[len(surname):]:
+        print(character)
         try:
             NMC = given_name_df[given_name_df['character'] == character]['n.male'].iloc[0]
         except IndexError:
