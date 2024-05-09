@@ -35,7 +35,7 @@ def NFT(name):
 
         totalNFC += NFC
         totalNFT += NFC / nFemale
-    return [float(format(totalNFT / (length - 1) * 1000, '.5f')), totalNFC / (length - 1)]
+    return [float(format(totalNFT / (length - len(surname)) * 1000, '.5f')), totalNFC / (length - len(surname))]
 
 
 def NMT(name):
@@ -49,6 +49,7 @@ def NMT(name):
     missing_char = 0
 
     surname = family_name(name)
+    print(surname)
 
     for character in list(name)[len(surname):]:
         print(character)
@@ -59,7 +60,8 @@ def NMT(name):
             continue
         totalNMC += NMC
         totalNMT += NMC / nMale
-    return [float(format(totalNMT / (length - 1) * 1000, '.5f')), totalNMC / (length - 1), missing_char]
+    return [float(format(totalNMT / (length - len(surname)) * 1000, '.5f')),
+            totalNMC / (length - len(surname)), missing_char]
 
 
 @app.route('/')
