@@ -31,6 +31,7 @@ def NFT(name):
         try:
             NFC = given_name_df[given_name_df['character'] == character]['n.female'].iloc[0]
         except IndexError:
+            length -= 1
             continue
 
         totalNFC += NFC
@@ -57,6 +58,7 @@ def NMT(name):
             NMC = given_name_df[given_name_df['character'] == character]['n.male'].iloc[0]
         except IndexError:
             missing_char += 1
+            length -= 1
             continue
         totalNMC += NMC
         totalNMT += NMC / nMale
